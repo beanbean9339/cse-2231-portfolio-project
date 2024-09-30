@@ -1,12 +1,12 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Isabella Lo
+- **Dot Number**: lo.314
+- **Due Date**: 9/13/2024
 
 ## Assignment Overview
 
-<!-- TODO: read the assignment overview then delete this comment -->
+
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,7 +29,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -52,7 +51,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
 
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
@@ -67,7 +65,6 @@ project. Specifically, students should be able to:
 
 ## Assignment Rubric: 10 Points
 
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -98,15 +95,11 @@ do good work.
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+
+I am intrested in front end, graphics, UX and UI, but also into data analytics. I like to cook, draw, swim, play piano, and violin. I also am intrested in AR and VR and AI. I also like formula 1, plants, visual and auditory art.
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
@@ -114,7 +107,6 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -124,7 +116,6 @@ you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
 
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -192,70 +183,86 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Dinner Party Planner
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - helps users plan a dinner party by organizing guests, creating a menu, and assigning tasks. It allows users to input guest inofrmation, dietary preferences, nad menu items, and then generates a shopping list and task schedule. It can also help with seating arrangements and time management.
+
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - 'void addGuest(String name, String dietary preferences)': Adds a guest with thier dietary preferences
+    - 'void addMenuItem(String item, String category)': Adds a menu item under a specified category (e.g., appetizer, main course)
+    - 'void addTask(String task, String time)': Schedule a task wiht a specific time.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - 'List<String> generate ShoppingList()' : creates a shopping list based on the menu items
+    - 'void assignTasks(String task, String person)': Assigns tasks to guests or helpers
+    - 'void createSeatingArrangement()' : Generates a seatingarrangement based on guest information.
+    - 'String generateTimeline()' : Creates a timeline of tasks and events during the dinner party
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it constantly updates the guest list, menu, tasks, and other planning elements
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for guests, menu items, and tasks to structure the data neatly
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, dietary categories, task types, and time slots
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, 'generateShoppingList' can use 'addMenuItem' to compile all ingredients.
 
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: plant care reminder & tracker
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - help users track and manage the care of their plants. They can add palnts, set watering schedules, track growth, and recieve reminders for different care activities.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - 'void addPlant(String name, Strign type, int wateringInterval)' : Adds a plant with its type and watering frequency
+    - 'void recordGrowth(String plantName, String date, String note)': Logs growth data or observations about a plant.
+    - 'boolean needsWatering(String plantName)': checks if a plant needs watering based on the last recorded date.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - 'void setReminder(String plantName, String activity, String time)': Sets reminders for different plant care activities
+    - 'void logHealthIssue(String plantName, String issue, String date)': Logs any health issues observed in a plant.
+    - 'String generateCareSummary(String plantName'): Generates a summary of care activities, health logs, and growth progress.
+    - 'List<String> upcomingTasks()': Lists all upcoming tasks or reminders set for the plants.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, state of plants and care logs will change over time
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes for plant details, schedules, and logs
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - type of plant, ca activities, status (healthy, needs attention)
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - 'generateCareSummmary' could use logs from 'recordGrowth' and 'logHealthIssue' to create a detailed care report
 
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: vision board (pinterest-like)
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - allows users to create a vision board by pinning images, quotes and etc into categorized boards. It can be used for goal setting, moodboards, or creative inspo, tagging and searching for pins, and sharing boards iwht other or keeping them private
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addPin(String title, String imageURL, String category): Adds a new pin to a board under a specific category.
+    - void createBoard(String boardName): Creates a new board for organizing pins.
+    - void removePin(String pinID): Removes a pin from the board.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - List<String> searchPins(String keyword): Searches for pins based on keywords within the board.
+    - void shareBoard(String boardName, String email): Shares a board with another user via email.
+    - void addTag(String pinID, String tag): Adds a tag to a pin for better organization and searchability.
+    - List<String> getPinnedCategories(): Retrieves all categories used within a board.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, users are adding, editing, and removing pins and boards
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, i think.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - default categories, privacy settings (public/private), and notification types
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, 'searchPin' would rely on 'addPin' and 'addTag' to filter and locate relevant pins
 
 ## Post-Assignment
 
@@ -264,7 +271,6 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.

@@ -2,6 +2,7 @@ package components;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.time.LocalDateTime;
 
 /**
  * The PlantTracker class is responsible for managing a collection of plants,
@@ -21,76 +22,101 @@ public class PlantTracker {
     /**
      * Adds a new plant to the tracker with specified care instructions.
      *
-     * @param name
-     *            the name of the plant
-     * @param careInstructions
-     *            the care instructions for the plant
+     * @param name             the name of the plant
+     * @param careInstructions  the care instructions for the plant
+     * @param wateringInterval   the interval for watering the plant (in days)
      */
-    public void addPlant(String name, String careInstructions) {
-        this.plants.put(name, new Plant(name, careInstructions));
-        System.out.println("Added plant: " + name);
+    public void addPlant(String name, String careInstructions, int wateringInterval) {
+        if (this.plants.containsKey(name)) {
+            System.out.println("Plant already exists: " + name);
+        } else {
+            this.plants.put(name, new Plant(name, careInstructions, wateringInterval));
+            System.out.println("Added plant: " + name);
+        }
     }
 
     /**
-     * Waters the specified plant if it exists in the tracker.
+     * Waters the specified plant if it needs watering.
      *
-     * @param name
-     *            the name of the plant to be watered
+     * @param name the name of the plant to be watered
      */
     public void waterPlant(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
-            plant.water();
-            System.out.println("Watered plant: " + name);
+            if (plant.needsWatering()) {
+                plant.water();
+                System.out.println("Watered plant: " + name);
+            } else {
+                System.out.println("No need to water " + name + " yet.");
+            }
         } else {
             System.out.println("Plant not found: " + name);
         }
     }
 
     /**
-     * Displays the care instructions for the specified plant.
+     * Displays the care instructions and last watered date for the specified plant.
      *
-     * @param name
-     *            the name of the plant for which to display care instructions
+     * @param name the name of the plant for which to display care instructions
      */
     public void showCareInstructions(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
             System.out.println("Care instructions for " + name + ": "
-                    + plant.getCareInstructions());
+                    + plant.getCareInstructions()
+                    + " Last watered on: " + plant.getLastWatered());
         } else {
             System.out.println("Plant not found: " + name);
         }
     }
 
     /**
-     * Inner class representing a Plant with a name, care instructions, and
-     * watered status.
+     * Displays a list of all plants in the tracker with watering status.
      */
-    private class Plant {
+    public void listAllPlants() {
+        if (this.plants.isEmpty()) {
+            System.out.println("No plants in the tracker.");
+        } else {
+            System.out.println("Plants in tracker:");
+            for (Plant plant : this.plants.values()) {
+                System.out.println("- " + plant.name + " (Last watered: " + plant.getLastWatered() + ")");
+                if (plant.needsWatering()) {
+                    System.out.println("  Needs watering soon.");
+                }
+            }
+        }
+    }
+
+    /**
+     * Inner class representing a Plant with a name, care instructions,
+     * watering status, and interval.
+     */
+    public class Plant {
         private String name;
         private String careInstructions;
-        private boolean isWatered;
+        private LocalDateTime lastWatered; // Track last watered time
+        private int wateringInterval; // Watering interval in days
 
         /**
-         * Constructs a new Plant instance with a name and care instructions.
+         * Constructs a new Plant instance with a name, care instructions,
+         * and watering interval.
          *
-         * @param name
-         *            the name of the plant
-         * @param careInstructions
-         *            the care instructions for the plant
+         * @param name             the name of the plant
+         * @param careInstructions  the care instructions for the plant
+         * @param wateringInterval   the interval for watering the plant (in days)
          */
-        public Plant(String name, String careInstructions) {
+        public Plant(String name, String careInstructions, int wateringInterval) {
             this.name = name;
             this.careInstructions = careInstructions;
-            this.isWatered = false;
+            this.lastWatered = LocalDateTime.now(); // Set initial last watered time
+            this.wateringInterval = wateringInterval;
         }
 
         /**
-         * Marks the plant as watered.
+         * Marks the plant as watered and updates the last watered time.
          */
         public void water() {
-            this.isWatered = true;
+            this.lastWatered = LocalDateTime.now();
         }
 
         /**
@@ -101,20 +127,38 @@ public class PlantTracker {
         public String getCareInstructions() {
             return this.careInstructions;
         }
+
+        /**
+         * Returns the last watered date and time.
+         *
+         * @return the last watered date and time
+         */
+        public LocalDateTime getLastWatered() {
+            return this.lastWatered;
+        }
+
+        /**
+         * Checks if the plant needs watering based on the last watered time
+         * and watering interval.
+         *
+         * @return true if the plant needs watering, false otherwise
+         */
+        public boolean needsWatering() {
+            return this.lastWatered.plusDays(this.wateringInterval).isBefore(LocalDateTime.now());
+        }
     }
 
     /**
      * Main method to demonstrate the functionality of the PlantTracker class.
      *
-     * @param args
-     *            command-line arguments (not used)
+     * @param args command-line arguments (not used)
      */
     public static void main(String[] args) {
         PlantTracker tracker = new PlantTracker();
 
-        // Adding plants
-        tracker.addPlant("Spider Plant", "Water every 1-2 weeks.");
-        tracker.addPlant("Pothos", "Water when the top inch of soil is dry.");
+        // Adding plants with care instructions and watering intervals
+        tracker.addPlant("Spider Plant", "Water every 1-2 weeks.", 14);
+        tracker.addPlant("Pothos", "Water when the top inch of soil is dry.", 7);
 
         // Show care instructions
         tracker.showCareInstructions("Spider Plant");
@@ -123,5 +167,8 @@ public class PlantTracker {
         // Watering plants
         tracker.waterPlant("Pothos");
         tracker.waterPlant("Cactus"); // Testing a non-existing plant
+
+        // List all plants
+        tracker.listAllPlants();
     }
 }

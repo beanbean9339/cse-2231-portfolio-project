@@ -8,9 +8,12 @@ public interface PlantTrackerKernel {
     /**
      * Adds a new plant to the tracker.
      *
-     * @param plantName The name of the plant.
-     * @param plantType The type of the plant.
-     * @param waterFrequency The frequency at which the plant needs to be watered.
+     * @param plantName
+     *            The name of the plant.
+     * @param plantType
+     *            The type of the plant.
+     * @param waterFrequency
+     *            The frequency at which the plant needs to be watered.
      * @return true if the plant was added successfully, false otherwise.
      * @ensures The plant is now tracked in the system.
      */
@@ -19,7 +22,8 @@ public interface PlantTrackerKernel {
     /**
      * Removes a plant from the tracker.
      *
-     * @param plantName The name of the plant to be removed.
+     * @param plantName
+     *            The name of the plant to be removed.
      * @return true if the plant was removed successfully, false otherwise.
      * @ensures The plant is no longer tracked in the system.
      */
@@ -28,8 +32,10 @@ public interface PlantTrackerKernel {
     /**
      * Retrieves information about a specific plant.
      *
-     * @param plantName The name of the plant to retrieve information for.
-     * @return A string containing the plant's details, or null if the plant is not found.
+     * @param plantName
+     *            The name of the plant to retrieve information for.
+     * @return A string containing the plant's details, or null if the plant is
+     *         not found.
      * @ensures The plant details are retrieved.
      */
     String getPlantInfo(String plantName);
@@ -37,8 +43,10 @@ public interface PlantTrackerKernel {
     /**
      * Updates the watering frequency for a specific plant.
      *
-     * @param plantName The name of the plant to update.
-     * @param newWaterFrequency The new watering frequency.
+     * @param plantName
+     *            The name of the plant to update.
+     * @param newWaterFrequency
+     *            The new watering frequency.
      * @return true if the frequency was updated successfully, false otherwise.
      * @ensures The watering frequency for the plant is updated.
      */

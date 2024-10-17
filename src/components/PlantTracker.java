@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  * The PlantTracker class is responsible for managing a collection of plants,
  * allowing users to add plants, water them, and display care instructions.
  */
-public class PlantTracker {
+public class PlantTracker implements PlantTrackerKernel {
     // Fields to store plant data
     private Map<String, Plant> plants;
 
@@ -19,13 +19,7 @@ public class PlantTracker {
         this.plants = new HashMap<>();
     }
 
-    /**
-     * Adds a new plant to the tracker with specified care instructions.
-     *
-     * @param name             the name of the plant
-     * @param careInstructions  the care instructions for the plant
-     * @param wateringInterval   the interval for watering the plant (in days)
-     */
+    @Override
     public void addPlant(String name, String careInstructions, int wateringInterval) {
         if (this.plants.containsKey(name)) {
             System.out.println("Plant already exists: " + name);
@@ -35,11 +29,7 @@ public class PlantTracker {
         }
     }
 
-    /**
-     * Waters the specified plant if it needs watering.
-     *
-     * @param name the name of the plant to be watered
-     */
+    @Override
     public void waterPlant(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
@@ -54,11 +44,7 @@ public class PlantTracker {
         }
     }
 
-    /**
-     * Displays the care instructions and last watered date for the specified plant.
-     *
-     * @param name the name of the plant for which to display care instructions
-     */
+    @Override
     public void showCareInstructions(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
@@ -70,9 +56,7 @@ public class PlantTracker {
         }
     }
 
-    /**
-     * Displays a list of all plants in the tracker with watering status.
-     */
+    @Override
     public void listAllPlants() {
         if (this.plants.isEmpty()) {
             System.out.println("No plants in the tracker.");

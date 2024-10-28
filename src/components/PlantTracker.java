@@ -130,6 +130,11 @@ public class PlantTracker implements PlantTrackerKernel {
         public boolean needsWatering() {
             return this.lastWatered.plusDays(this.wateringInterval).isBefore(LocalDateTime.now());
         }
+
+		public String getName() {
+			// TODO Auto-generated method stub
+			throw new UnsupportedOperationException("Unimplemented method 'getName'");
+		}
     }
 
     /**

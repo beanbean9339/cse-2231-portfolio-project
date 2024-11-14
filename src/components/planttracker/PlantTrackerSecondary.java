@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * The PlantTrackerSecondary class manages a collection of plants.
  */
-public class PlantTrackerSecondary {
+public abstract class PlantTrackerSecondary implements PlantTracker {
     private List<Plant> plants;
 
     /**

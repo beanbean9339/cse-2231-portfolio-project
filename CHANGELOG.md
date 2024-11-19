@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2024.09.29
+
+### Added
+
+- Designed a proof of concept for **PlantTracker** component.
+
+### Updated
+
+- Changed design to include improved user interface for adding, watering, and viewing plant care instructions.
+
+
+## 2024.09.05
+
+### Added
+
+- Designed a Dinner Party Planner component
+- Designed a plant care reminder & trackercomponent
+- Designed a vision board (pinterest-like) component
+
 ## [Unreleased]
 
 ## [2024.08.07]

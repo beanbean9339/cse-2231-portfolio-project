@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2024.10.27
+
+### Added
+
+- Designed abstract class `ComponentSecondary` for the portfolio project, implementing all secondary methods as specified in the enhanced interface.
+- Included `toString()` and `equals()` methods to the abstract class, ensuring adherence to design-by-contract principles.
+- Implemented secondary methods using kernel methods only, as required by the assignment guidelines.
+
+### Updated
+
+- Refined method implementations to check preconditions and align with kernel method contracts.
+- Enhanced code organization and documentation for clarity and maintainability.
+
 ## 2024.09.29
 
 ### Added

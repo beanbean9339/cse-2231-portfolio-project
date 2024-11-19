@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+
+## 2024.11.15
+### Added
+- **`addPlant`**: Allows the user to add a new plant to the tracker, ensuring no duplicates are added.
+- **`removePlant`**: Removes a plant from the tracker by name.
+- **`getRandomPlant`**: Retrieves a random plant from the tracker and displays its details.
+- **`listAllPlants`**: Lists all plant names currently in the tracker.
+- **`listPlantsThatNeedWater`**: Lists all plants that need water (i.e., have not been watered in the last 7 days).
+- **`waterPlant`**: Waters a specific plant, updating its last watered date.
+- **`showCareInstructions`**: Displays the care instructions for a specific plant.
+
+### Changed
+- **`PlantTracker` Class**: Refactored core methods to ensure they interact with a `Map<String, Plant>` data structure for efficient plant management.
+- **`needsWater` Method in `Plant`**: Added logic to check if a plant requires watering based on the last watered date.
+
 ## 2024.10.27
 
 ### Added

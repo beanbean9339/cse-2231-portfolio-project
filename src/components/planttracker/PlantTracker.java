@@ -11,8 +11,14 @@ import java.util.logging.Logger;
  * This class represents a tracker for plants, allowing the user to add plants,
  * display plant information, water plants, and list various plant statuses.
  */
+//<<<<<<< kernel-implementation
 public final class PlantTracker {
     private static final Logger logger = Logger.getLogger(PlantTracker.class.getName());
+//=======
+public interface PlantTracker extends PlantTrackerKernel {
+
+    // Map to store plant names and their details (plant data)
+//>>>>>>> main
     private Map<String, Plant> plants;
 
     public PlantTracker() {

@@ -9,7 +9,7 @@ import java.util.List;
  * PlantTrackerKernel interface. It manages a collection of plants using only kernel
  * methods.
  */
-public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
+public abstract class PlantTrackerSecondary implements PlantTracker {
     // Nested static Plant class
     protected static class Plant {
         private final String name;

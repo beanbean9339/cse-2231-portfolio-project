@@ -1,90 +1,40 @@
 package components.planttracker;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * The PlantTrackerSecondary class is an abstract implementation of the
- * PlantTrackerKernel interface. It manages a collection of plants using only kernel
- * methods.
+ * The PlantTrackerSecondary class manages a collection of plants.
+ * This class implements the PlantTrackerKernel interface and
+ * provides methods to add and retrieve plants.
  */
-public abstract class PlantTrackerSecondary implements PlantTracker {
-    // Nested static Plant class
-    protected static class Plant {
-        private final String name;
-        private final String species;
-        private final int age;
-        private final String careInstructions;
-
-        public Plant(String name, String species, int age, String careInstructions) {
-            this.name = name;
-            this.species = species;
-            this.age = age;
-            this.careInstructions = careInstructions;
-        }
-
-        public final String getName() {
-            return this.name;
-        }
-
-        @Override
-        public final String toString() {
-            return "Plant Name: " + this.name + ", Species: " + this.species
-                    + ", Age: " + this.age + " years, Care Instructions: "
-                    + this.careInstructions;
-        }
-    }
-
-    // The list of plants will be managed by subclasses using createRepresentation()
-    private List<Plant> plants;
+public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
 
     /**
-     * The addPlant method should be implemented by subclasses to ensure proper usage
-     * of the kernel method.
+     * Adds a plant to the collection.
      *
-     * @param name the name of the plant
-     * @param species the species of the plant
-     * @param age the age of the plant (in years)
-     * @param careInstructions the care instructions for the plant
+     * @param name The name of the plant.
+     * @param species The species of the plant.
+     * @param age The age of the plant.
+     * @param careInstructions The care instructions for the plant.
      */
     @Override
     public abstract void addPlant(String name, String species, int age, String careInstructions);
 
     /**
-     * Returns an unmodifiable list of all plants. This method uses the kernel method.
+     * Retrieves an unmodifiable list of all plants.
      *
      * @return a list of all plants
-     */
-    @Override
-    public List<String> listAllPlants() {
-        List<Plant> plantsList = this.createRepresentation();
-        if (plantsList.isEmpty()) {
-            System.out.println("No plants in the tracker.");
-            return new ArrayList<>(); // Return an empty list if no plants
-        } else {
-            List<String> plantDetails = new ArrayList<>();
-            for (Plant plant : plantsList) {
-                plantDetails.add(plant.toString()); // Collect plant details
-            }
-            return plantDetails; // Return the list of plant details
-        }
-    }
-
-    /**
-     * Kernel method for retrieving all plants.
-     *
-     * @return an unmodifiable list of plants
      */
     protected List<Plant> getAllPlants() {
         return Collections.unmodifiableList(this.createRepresentation());
     }
 
     /**
-     * Abstract kernel method that should be implemented by subclasses
-     * to return the plant representation.
+     * Creates a representation of the plant collection.
+     * This method should be implemented by subclasses to provide the actual list of plants.
      *
-     * @return a mutable list of plants
+     * @return a list of plants
      */
     protected abstract List<Plant> createRepresentation();
 }

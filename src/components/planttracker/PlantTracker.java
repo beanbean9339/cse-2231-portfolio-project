@@ -1,25 +1,22 @@
 package components.planttracker;
-import java.util.Random;
-import java.util.Date;
-import java.util.List;
+
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.logging.Logger;
 
 /**
  * This class represents a tracker for plants, allowing the user to add plants,
  * display plant information, water plants, and list various plant statuses.
  */
-//<<<<<<< kernel-implementation
-public final class PlantTracker {
+public final class PlantTracker implements PlantTrackerKernel {
     private static final Logger logger = Logger.getLogger(PlantTracker.class.getName());
-//=======
-public interface PlantTracker extends PlantTrackerKernel {
 
-    // Map to store plant names and their details (plant data)
-//>>>>>>> main
-    private Map<String, Plant> plants;
+    // Map to store plant names and their details
+    private final Map<String, Plant> plants;
 
     public PlantTracker() {
         this.plants = new HashMap<>();
@@ -33,6 +30,7 @@ public interface PlantTracker extends PlantTrackerKernel {
      * @param age The age of the plant.
      * @param careInstructions The care instructions for the plant.
      */
+    @Override
     public void addPlant(String name, String species, int age, String careInstructions) {
         if (this.plants.containsKey(name)) {
             logger.info("Plant already exists: " + name);
@@ -47,6 +45,7 @@ public interface PlantTracker extends PlantTrackerKernel {
      *
      * @return A list of plant names.
      */
+    @Override
     public List<String> listAllPlants() {
         List<String> plantNames = new ArrayList<>();
         if (this.plants.isEmpty()) {
@@ -64,6 +63,7 @@ public interface PlantTracker extends PlantTrackerKernel {
      *
      * @param name The name of the plant to water.
      */
+    @Override
     public void waterPlant(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
@@ -80,6 +80,7 @@ public interface PlantTracker extends PlantTrackerKernel {
      *
      * @param name The name of the plant.
      */
+    @Override
     public void showCareInstructions(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
@@ -92,6 +93,7 @@ public interface PlantTracker extends PlantTrackerKernel {
     /**
      * Display all plants with detailed information.
      */
+    @Override
     public void displayAllPlants() {
         if (this.plants.isEmpty()) {
             logger.info("No plants in the tracker.");
@@ -109,6 +111,7 @@ public interface PlantTracker extends PlantTrackerKernel {
     /**
      * Get a random plant from the tracker and display its information.
      */
+    @Override
     public void getRandomPlant() {
         if (this.plants.isEmpty()) {
             logger.info("No plants in the tracker.");
@@ -126,6 +129,7 @@ public interface PlantTracker extends PlantTrackerKernel {
     /**
      * List all plants that need water.
      */
+    @Override
     public void listPlantsThatNeedWater() {
         boolean found = false;
         for (Plant plant : this.plants.values()) {
@@ -144,6 +148,7 @@ public interface PlantTracker extends PlantTrackerKernel {
      *
      * @return The number of plants.
      */
+    @Override
     public int countPlants() {
         return this.plants.size();
     }
@@ -153,6 +158,7 @@ public interface PlantTracker extends PlantTrackerKernel {
      *
      * @param name The name of the plant to remove.
      */
+    @Override
     public void removePlant(String name) {
         if (this.plants.containsKey(name)) {
             this.plants.remove(name);
@@ -166,10 +172,10 @@ public interface PlantTracker extends PlantTrackerKernel {
      * Inner class to represent a plant.
      */
     public class Plant {
-        private String name;
-        private String species;
-        private int age;
-        private String careInstructions;
+        private final String name;
+        private final String species;
+        private final int age;
+        private final String careInstructions;
         private Date lastWatered;
 
         public Plant(String name, String species, int age, String careInstructions) {

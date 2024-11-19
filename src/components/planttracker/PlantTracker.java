@@ -10,7 +10,7 @@ import java.util.Map;
  * managing a collection of plants, allowing users to add plants, water them,
  * and display care instructions.
  */
-public class PlantTracker implements PlantTrackerKernel {
+public interface PlantTracker extends PlantTrackerKernel {
 
     // Map to store plant names and their details (plant data)
     private Map<String, Plant> plants;

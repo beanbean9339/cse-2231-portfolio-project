@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * The PlantTrackerKernel interface defines methods for plant tracking functionality.
  */
-public interface PlantTrackerKernel {
+public interface PlantTrackerKernel extends Standard<PlantTracker> {
 
     /**
      * Adds a new plant to the tracker with specified care instructions.

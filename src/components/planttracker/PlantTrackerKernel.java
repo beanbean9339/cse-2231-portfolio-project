@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * The PlantTrackerKernel interface defines methods for plant tracking functionality.
  */
-public interface PlantTrackerKernel {
+public interface PlantTrackerKernel extends Standard<PlantTracker> {
 
     /**
      * Adds a new plant to the tracker with specified care instructions.
@@ -37,33 +37,4 @@ public interface PlantTrackerKernel {
      * @param name the name of the plant
      */
     void showCareInstructions(String name);
-
-    /**
-     * Display detailed information for all plants.
-     */
-    void displayAllPlants();
-
-    /**
-     * Get a random plant from the tracker and display its information.
-     */
-    void getRandomPlant();
-
-    /**
-     * List all plants that need water.
-     */
-    void listPlantsThatNeedWater();
-
-    /**
-     * Count the number of plants in the tracker.
-     *
-     * @return the number of plants
-     */
-    int countPlants();
-
-    /**
-     * Remove a plant from the tracker.
-     *
-     * @param name the name of the plant to remove
-     */
-    void removePlant(String name);
 }

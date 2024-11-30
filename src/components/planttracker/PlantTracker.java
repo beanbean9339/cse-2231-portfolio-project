@@ -12,7 +12,8 @@ import java.util.logging.Logger;
  * display plant information, water plants, and list various plant statuses.
  */
 public final class PlantTracker extends PlantTrackerSecondary {
-    private static final Logger logger = Logger.getLogger(PlantTracker.class.getName());
+    private static final Logger logger = Logger
+            .getLogger(PlantTracker.class.getName());
 
     private final Map<String, Plant> plants;
 
@@ -21,11 +22,13 @@ public final class PlantTracker extends PlantTrackerSecondary {
     }
 
     @Override
-    public void addPlant(String name, String species, int age, String careInstructions) {
+    public void addPlant(String name, String species, int age,
+            String careInstructions) {
         if (this.plants.containsKey(name)) {
             logger.info("Plant already exists: " + name);
         } else {
-            this.plants.put(name, new Plant(name, species, age, careInstructions));
+            this.plants.put(name,
+                    new Plant(name, species, age, careInstructions));
             logger.info("Added plant: " + name);
         }
     }
@@ -63,7 +66,8 @@ public final class PlantTracker extends PlantTrackerSecondary {
     public void showCareInstructions(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
-            logger.info("Care instructions for " + name + ": " + plant.getCareInstructions());
+            logger.info("Care instructions for " + name + ": "
+                    + plant.getCareInstructions());
         } else {
             logger.warning("Plant not found: " + name);
         }
@@ -78,7 +82,8 @@ public final class PlantTracker extends PlantTrackerSecondary {
                 logger.info("Name: " + plant.getName());
                 logger.info("Species: " + plant.getSpecies());
                 logger.info("Age: " + plant.getAge() + " years");
-                logger.info("Care Instructions: " + plant.getCareInstructions());
+                logger.info(
+                        "Care Instructions: " + plant.getCareInstructions());
                 logger.info("--------------------------");
             }
         }
@@ -95,22 +100,8 @@ public final class PlantTracker extends PlantTrackerSecondary {
             logger.info("Random Plant: " + randomPlant.getName());
             logger.info("Species: " + randomPlant.getSpecies());
             logger.info("Age: " + randomPlant.getAge() + " years");
-            logger.info("Care Instructions: " + randomPlant.getCareInstructions());
-        }
-    }
-
-    @Override
-    public void listPlantsThatNeedWater() {
-        boolean found = false;
-        for (Plant plant : this.plants.values()) {
-            // Assuming needsWater method determines if the plant needs water
-            // if (plant.needsWater()) {
-            //     logger.info(plant.getName() + " needs water.");
-            //     found = true;
-            // }
-        }
-        if (!found) {
-            logger.info("No plants need water at the moment.");
+            logger.info(
+                    "Care Instructions: " + randomPlant.getCareInstructions());
         }
     }
 
@@ -128,4 +119,52 @@ public final class PlantTracker extends PlantTrackerSecondary {
             logger.warning("Plant not found: " + name);
         }
     }
+
+    @Override
+    public void clear() {
+        this.plants.clear();
+        logger.info("All plants have been cleared.");
+    }
+
+    @Override
+    public void transferFrom(PlantTracker source) {
+        List<Plant> sourceRepresentation = source.createRepresentation();
+        this.createRepresentation().clear();
+        this.createRepresentation().addAll(sourceRepresentation);
+        sourceRepresentation.clear();
+    }
+
+    @Override
+    public void listPlantsThatNeedWater() {
+        boolean found = false;
+
+        for (Plant plant : this.plants.values()) {
+            boolean needsWater = false;
+
+            // example logic to determine if the plant needs water based on age
+            if (plant.getAge() < 2) {
+                // younger plants may need water more frequently
+                needsWater = true;
+            } else if (plant.getAge() >= 5) {
+                // older plants may also need water more frequently
+                needsWater = true;
+            }
+
+            // if the plant needs water, log it
+            if (needsWater) {
+                logger.info(plant.getName() + " needs water.");
+                found = true;
+            }
+        }
+
+        if (!found) {
+            logger.info("No plants need water at the moment.");
+        }
+    }
+
+    @Override
+    public PlantTracker newInstance() {
+        return new PlantTracker();
+    }
+
 }

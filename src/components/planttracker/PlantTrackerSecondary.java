@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The PlantTrackerSecondary class manages a collection of plants.
- * This class implements the PlantTrackerKernel interface and
- * provides methods to add and retrieve plants.
+ * The PlantTrackerSecondary class manages a collection of plants. This class
+ * implements the PlantTrackerKernel interface and provides methods to add and
+ * retrieve plants.
  */
 public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
 
@@ -22,12 +22,17 @@ public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
         /**
          * Constructs a Plant with the specified details.
          *
-         * @param name the name of the plant
-         * @param species the species of the plant
-         * @param age the age of the plant (in years)
-         * @param careInstructions the care instructions for the plant
+         * @param name
+         *            the name of the plant
+         * @param species
+         *            the species of the plant
+         * @param age
+         *            the age of the plant (in years)
+         * @param careInstructions
+         *            the care instructions for the plant
          */
-        public Plant(String name, String species, int age, String careInstructions) {
+        public Plant(String name, String species, int age,
+                String careInstructions) {
             this.name = name;
             this.species = species;
             this.age = age;
@@ -77,18 +82,17 @@ public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
          */
         @Override
         public String toString() {
-            return "Plant{" +
-                    "name='" + this.name + '\'' +
-                    ", species='" + this.species + '\'' +
-                    ", age=" + this.age +
-                    ", careInstructions='" + this.careInstructions + '\'' +
-                    '}';
+            return "Plant{" + "name='" + this.name + '\'' + ", species='"
+                    + this.species + '\'' + ", age=" + this.age
+                    + ", careInstructions='" + this.careInstructions + '\''
+                    + '}';
         }
 
         /**
          * Checks if this plant is equal to another object.
          *
-         * @param obj the object to compare with
+         * @param obj
+         *            the object to compare with
          * @return true if the objects are equal, false otherwise
          */
         @Override
@@ -100,10 +104,9 @@ public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
                 return false;
             }
             Plant plant = (Plant) obj;
-            return this.age == plant.age &&
-                    this.name.equals(plant.name) &&
-                    this.species.equals(plant.species) &&
-                    this.careInstructions.equals(plant.careInstructions);
+            return this.age == plant.age && this.name.equals(plant.name)
+                    && this.species.equals(plant.species)
+                    && this.careInstructions.equals(plant.careInstructions);
         }
     }
 
@@ -117,10 +120,23 @@ public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
     }
 
     /**
-     * Creates a representation of the plant collection.
-     * This method should be implemented by subclasses to provide the actual list of plants.
+     * Creates a representation of the plant collection. This method should be
+     * implemented by subclasses to provide the actual list of plants.
      *
      * @return a list of plants
      */
     protected abstract List<Plant> createRepresentation();
+
+    public void clear() {
+        this.createRepresentation().clear();
+    }
+
+    public abstract void transferFrom(PlantTracker source);
+
+    public PlantTracker newInstance() {
+        return new PlantTracker(); // You can provide a default implementation
+    }
+    @Override
+    public abstract void listPlantsThatNeedWater();
+
 }

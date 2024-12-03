@@ -1,90 +1,142 @@
 package components.planttracker;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * The PlantTrackerSecondary class is an abstract implementation of the
- * PlantTrackerKernel interface. It manages a collection of plants using only kernel
- * methods.
+ * The PlantTrackerSecondary class manages a collection of plants. This class
+ * implements the PlantTrackerKernel interface and provides methods to add and
+ * retrieve plants.
  */
-public abstract class PlantTrackerSecondary implements PlantTracker {
-    // Nested static Plant class
+public abstract class PlantTrackerSecondary implements PlantTrackerKernel {
+
+    /**
+     * A nested static class representing a Plant.
+     */
     protected static class Plant {
         private final String name;
         private final String species;
         private final int age;
         private final String careInstructions;
 
-        public Plant(String name, String species, int age, String careInstructions) {
+        /**
+         * Constructs a Plant with the specified details.
+         *
+         * @param name
+         *            the name of the plant
+         * @param species
+         *            the species of the plant
+         * @param age
+         *            the age of the plant (in years)
+         * @param careInstructions
+         *            the care instructions for the plant
+         */
+        public Plant(String name, String species, int age,
+                String careInstructions) {
             this.name = name;
             this.species = species;
             this.age = age;
             this.careInstructions = careInstructions;
         }
 
-        public final String getName() {
+        /**
+         * Returns the name of the plant.
+         *
+         * @return the name of the plant
+         */
+        public String getName() {
             return this.name;
         }
 
+        /**
+         * Returns the species of the plant.
+         *
+         * @return the species of the plant
+         */
+        public String getSpecies() {
+            return this.species;
+        }
+
+        /**
+         * Returns the age of the plant.
+         *
+         * @return the age of the plant (in years)
+         */
+        public int getAge() {
+            return this.age;
+        }
+
+        /**
+         * Returns the care instructions for the plant.
+         *
+         * @return the care instructions for the plant
+         */
+        public String getCareInstructions() {
+            return this.careInstructions;
+        }
+
+        /**
+         * Provides a string representation of the plant.
+         *
+         * @return a string representation of the plant
+         */
         @Override
-        public final String toString() {
-            return "Plant Name: " + this.name + ", Species: " + this.species
-                    + ", Age: " + this.age + " years, Care Instructions: "
-                    + this.careInstructions;
+        public String toString() {
+            return "Plant{" + "name='" + this.name + '\'' + ", species='"
+                    + this.species + '\'' + ", age=" + this.age
+                    + ", careInstructions='" + this.careInstructions + '\''
+                    + '}';
+        }
+
+        /**
+         * Checks if this plant is equal to another object.
+         *
+         * @param obj
+         *            the object to compare with
+         * @return true if the objects are equal, false otherwise
+         */
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null || this.getClass() != obj.getClass()) {
+                return false;
+            }
+            Plant plant = (Plant) obj;
+            return this.age == plant.age && this.name.equals(plant.name)
+                    && this.species.equals(plant.species)
+                    && this.careInstructions.equals(plant.careInstructions);
         }
     }
 
-    // The list of plants will be managed by subclasses using createRepresentation()
-    private List<Plant> plants;
-
     /**
-     * The addPlant method should be implemented by subclasses to ensure proper usage
-     * of the kernel method.
-     *
-     * @param name the name of the plant
-     * @param species the species of the plant
-     * @param age the age of the plant (in years)
-     * @param careInstructions the care instructions for the plant
-     */
-    @Override
-    public abstract void addPlant(String name, String species, int age, String careInstructions);
-
-    /**
-     * Returns an unmodifiable list of all plants. This method uses the kernel method.
+     * Retrieves an unmodifiable list of all plants.
      *
      * @return a list of all plants
-     */
-    @Override
-    public List<String> listAllPlants() {
-        List<Plant> plantsList = this.createRepresentation();
-        if (plantsList.isEmpty()) {
-            System.out.println("No plants in the tracker.");
-            return new ArrayList<>(); // Return an empty list if no plants
-        } else {
-            List<String> plantDetails = new ArrayList<>();
-            for (Plant plant : plantsList) {
-                plantDetails.add(plant.toString()); // Collect plant details
-            }
-            return plantDetails; // Return the list of plant details
-        }
-    }
-
-    /**
-     * Kernel method for retrieving all plants.
-     *
-     * @return an unmodifiable list of plants
      */
     protected List<Plant> getAllPlants() {
         return Collections.unmodifiableList(this.createRepresentation());
     }
 
     /**
-     * Abstract kernel method that should be implemented by subclasses
-     * to return the plant representation.
+     * Creates a representation of the plant collection. This method should be
+     * implemented by subclasses to provide the actual list of plants.
      *
-     * @return a mutable list of plants
+     * @return a list of plants
      */
     protected abstract List<Plant> createRepresentation();
+
+    public void clear() {
+        this.createRepresentation().clear();
+    }
+
+    public abstract void transferFrom(PlantTracker source);
+
+    public PlantTracker newInstance() {
+        return new PlantTracker(); // You can provide a default implementation
+    }
+    @Override
+    public abstract void listPlantsThatNeedWater();
+
 }

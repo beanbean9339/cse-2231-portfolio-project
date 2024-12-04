@@ -1,73 +1,97 @@
 package components.planttracker;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlantTracker1L {
-    // Define a list to hold plants
-    private ArrayList<Plant> plants;
+    private List<Plant> plants;
 
-    // Constructor
     public PlantTracker1L() {
         this.plants = new ArrayList<>();
     }
 
-    // Inner class to represent a Plant
-    private class Plant {
-        private String name;
-        private String species;
-        private String wateringSchedule;
-        private String notes;
-
-        public Plant(String name, String species, String wateringSchedule, String notes) {
-            this.name = name;
-            this.species = species;
-            this.wateringSchedule = wateringSchedule;
-            this.notes = notes;
+    public void addPlant(String name, String species, String wateringSchedule, String careInstructions) {
+        // Handle empty name or species
+        if (name.isEmpty()) {
+            System.out.println("Plant name cannot be empty.");
+            return;
+        }
+        if (species.isEmpty()) {
+            System.out.println("Species cannot be empty.");
+            return;
         }
 
-        @Override
-        public String toString() {
-            return "Plant Name: " + this.name + ", Species: " + this.species +
-                   ", Watering Schedule: " + this.wateringSchedule + ", Notes: " + this.notes;
+        // Prevent adding duplicate plants by name
+        for (Plant plant : this.plants) {
+            if (plant.getName().equals(name)) {
+                System.out.println("Plant already exists: " + name);
+                return;
+            }
         }
-    }
 
-    // Method to add a plant
-    public void addPlant(String name, String species, String wateringSchedule, String notes) {
-        this.plants.add(new Plant(name, species, wateringSchedule, notes));
+        // Create new plant and add to list
+        Plant newPlant = new Plant(name, species, wateringSchedule, careInstructions);
+        this.plants.add(newPlant);
         System.out.println("Added plant: " + name);
     }
 
-    // Method to view all plants
-    public void viewPlants() {
-        if (this.plants.isEmpty()) {
-            System.out.println("No plants found.");
-        } else {
-            for (Plant plant : this.plants) {
-                System.out.println(plant);
-            }
-        }
-    }
-
-    // Method to remove a plant by name
     public void removePlant(String name) {
+        // Iterate through the plants list and remove the plant by name
         for (int i = 0; i < this.plants.size(); i++) {
-            if (this.plants.get(i).name.equalsIgnoreCase(name)) {
+            if (this.plants.get(i).getName().equals(name)) {
                 this.plants.remove(i);
                 System.out.println("Removed plant: " + name);
                 return;
             }
         }
+        // If plant is not found, print message
         System.out.println("Plant not found: " + name);
     }
 
-    // Main method for testing
-    public static void main(String[] args) {
-        PlantTracker1L tracker = new PlantTracker1L();
-        tracker.addPlant("Fern", "Polypodium", "Every 2 weeks", "Needs indirect sunlight.");
-        tracker.addPlant("Cactus", "Echinopsis", "Every 3 weeks", "Likes dry soil.");
-        tracker.viewPlants();
-        tracker.removePlant("Fern");
-        tracker.viewPlants();
+    public void viewPlants() {
+        // If there are no plants, print message
+        if (this.plants.isEmpty()) {
+            System.out.println("No plants found.");
+        } else {
+            // Print out each plant's details
+            for (Plant plant : this.plants) {
+                System.out.println("Plant Name: " + plant.getName());
+                System.out.println("Species: " + plant.getSpecies());
+                System.out.println("Watering Schedule: " + plant.getWateringSchedule());
+                System.out.println("Care Instructions: " + plant.getCareInstructions());
+                System.out.println("------");
+            }
+        }
+    }
+
+    // Static inner Plant class to avoid potential issues with non-static inner classes
+    static class Plant {
+        private String name;
+        private String species;
+        private String wateringSchedule;
+        private String careInstructions;
+
+        public Plant(String name, String species, String wateringSchedule, String careInstructions) {
+            this.name = name;
+            this.species = species;
+            this.wateringSchedule = wateringSchedule;
+            this.careInstructions = careInstructions;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public String getSpecies() {
+            return this.species;
+        }
+
+        public String getWateringSchedule() {
+            return this.wateringSchedule;
+        }
+
+        public String getCareInstructions() {
+            return this.careInstructions;
+        }
     }
 }

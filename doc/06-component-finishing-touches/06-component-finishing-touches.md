@@ -1,9 +1,8 @@
 # Portfolio Part 6: Finishing Touches
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) and delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) and delete this comment -->
-- **Due Date**: <!-- TODO: fill out with due date and time (e.g., 10/17 @ 3:10 PM EST) and delete this comment -->
-
+- **Name**: Isabella Lo
+- **Dot Number**: lo.314
+- **Due Date**: 12/4/2024 @3pm est
 ## Assignment Overview
 
 By now, you should have an entire component implemented at all levels. For
@@ -298,18 +297,18 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+Completing the PlantTracker component has given me a much clearer understanding of how software development works in the real world. Although the scope of this project was smaller compared to what you might see in a professional setting, the process of breaking down the project into manageable components and focusing on clear, reusable code is very similar to what I'd expect in a real-world development environment. This experience has shown me the importance of writing maintainable, efficient code, and how crucial it is to focus on testing and debugging to ensure the functionality works as intended.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+At first, I struggled with how to layer and organize the files effectively. I reached out to Jeremy for guidance, and he helped me understand the importance of clear separation and how to structure the components to make the code more maintainable and scalable. By following his advice, I was able to implement a cleaner, more logical structure that made the project easier to work with and debug.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+To be honest, software development still isn't something I'm deeply passionate about. While I do recognize how useful and cool it is to learn, it's just not my favorite thing to do. I’ve never been super into coding in the first place, but this project definitely helped me see the value in it, especially in terms of how much it can impact various industries. I learned a lot throughout the process, especially about organizing and structuring a project, and I'm glad I gained that experience. It's a valuable skill to have, even if it's not something I want to pursue long-term.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -317,25 +316,51 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+Throughout the process of completing the PlantTracker component, I picked up several technical and non-technical skills. On the technical side, I learned a lot about structuring code, organizing files, and how to break down a project into manageable pieces. I also learned how to implement business logic and handle data efficiently within a component. I also had to adapt to writing clear documentation for my code, which helped me explain how everything worked for myself and others who might work with it.
+
+On the non-technical side, I developed better problem-solving skills, particularly when I hit roadblocks or when I wasn’t sure how to structure the code. I also worked on my communication skills when I reached out for help from my mentor, Jeremy, to clarify how to layer the files properly. This helped me develop confidence in seeking help when needed and learning from others. Additionally, managing time efficiently while juggling other responsibilities was another skill I refined through this project.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+Software Development Skills:
+
+- Developed and implemented business logic in a plant tracking component.
+- Organized and structured code files, following best practices for clean and maintainable code.
+- Wrote clear and concise documentation for code functionality and usage.
+- Implemented efficient data handling and state management within components.
+
+Problem-Solving & Technical Communication:
+
+- Enhanced problem-solving skills by identifying and overcoming technical challenges in code structure and functionality.
+- Collaborated with mentors to improve code architecture and resolve issues related to file layering.
+
+Time Management & Project Planning:
+
+- Managed multiple project tasks simultaneously, prioritizing and meeting deadlines.
+- Refined time management skills while balancing project work with other responsibilities.
+
+Collaboration & Learning:
+
+- Developed strong communication skills by seeking guidance and feedback from mentors to improve project outcomes.
+- Demonstrated adaptability and willingness to learn new concepts and tools independently.
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+Working on this project has reinforced my understanding of what software development entails, but it hasn't drastically changed my overall career trajectory. Although the plant tracking component was a good exercise, I still find myself more drawn to areas outside of pure software development. It was useful to get hands-on experience with the process, but I don't feel a strong passion for coding. That said, I’ve gained a lot of practical skills and insights that will serve me well in future projects, especially in understanding the technical aspects of building systems. Even though it's not my favorite thing, I recognize its importance in many fields, and I now have a clearer picture of how these skills could be applied in various roles, whether in tech or in other areas that require problem-solving and system design.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+To continue on my career trajectory, I think the next step is to explore roles that combine software development with other interests or skills I’m more passionate about, such as product management or project coordination. I’d like to look into areas that require both technical understanding and strategic thinking, which would allow me to apply my development knowledge without being solely focused on coding.
+
+Additionally, I plan to build more projects that integrate software with real-world problems, like the plant tracking project, which could give me a better sense of the broader impact of software in different industries. I want to also continue learning new technologies and best practices through resources like online courses, books, and networking events.
+
+As for mentors, I could reach out to individuals I’ve worked with during this project, like Jeremy, who has given me guidance on coding structure and problem-solving. Additionally, professors, professional connections, or colleagues who have experience in tech roles outside of just software development could offer valuable insights. People who work in tech-related roles such as UX design, product management, or systems architecture might also be great sources of guidance as I explore these areas.
 
 ### Changelog
 

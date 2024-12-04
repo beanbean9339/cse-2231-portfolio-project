@@ -5,15 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
  * This class represents a tracker for plants, allowing the user to add plants,
  * display plant information, water plants, and list various plant statuses.
  */
-public final class PlantTracker extends PlantTrackerSecondary {
-    private static final Logger logger = Logger
-            .getLogger(PlantTracker.class.getName());
+public final class PlantTracker {
+    private static final Logger logger = Logger.getLogger(PlantTracker.class.getName());
 
     private final Map<String, Plant> plants;
 
@@ -21,24 +22,15 @@ public final class PlantTracker extends PlantTrackerSecondary {
         this.plants = new HashMap<>();
     }
 
-    @Override
-    public void addPlant(String name, String species, int age,
-            String careInstructions) {
+    public void addPlant(String name, String species, int age, String careInstructions) {
         if (this.plants.containsKey(name)) {
             logger.info("Plant already exists: " + name);
         } else {
-            this.plants.put(name,
-                    new Plant(name, species, age, careInstructions));
+            this.plants.put(name, new Plant(name, species, age, careInstructions));
             logger.info("Added plant: " + name);
         }
     }
 
-    @Override
-    protected List<Plant> createRepresentation() {
-        return new ArrayList<>(this.plants.values());
-    }
-
-    @Override
     public List<String> listAllPlants() {
         List<String> plantNames = new ArrayList<>();
         if (this.plants.isEmpty()) {
@@ -51,7 +43,6 @@ public final class PlantTracker extends PlantTrackerSecondary {
         return plantNames;
     }
 
-    @Override
     public void waterPlant(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
@@ -62,18 +53,15 @@ public final class PlantTracker extends PlantTrackerSecondary {
         }
     }
 
-    @Override
     public void showCareInstructions(String name) {
         Plant plant = this.plants.get(name);
         if (plant != null) {
-            logger.info("Care instructions for " + name + ": "
-                    + plant.getCareInstructions());
+            logger.info("Care instructions for " + name + ": " + plant.getCareInstructions());
         } else {
             logger.warning("Plant not found: " + name);
         }
     }
 
-    @Override
     public void displayAllPlants() {
         if (this.plants.isEmpty()) {
             logger.info("No plants in the tracker.");
@@ -82,14 +70,12 @@ public final class PlantTracker extends PlantTrackerSecondary {
                 logger.info("Name: " + plant.getName());
                 logger.info("Species: " + plant.getSpecies());
                 logger.info("Age: " + plant.getAge() + " years");
-                logger.info(
-                        "Care Instructions: " + plant.getCareInstructions());
+                logger.info("Care Instructions: " + plant.getCareInstructions());
                 logger.info("--------------------------");
             }
         }
     }
 
-    @Override
     public void getRandomPlant() {
         if (this.plants.isEmpty()) {
             logger.info("No plants in the tracker.");
@@ -100,17 +86,14 @@ public final class PlantTracker extends PlantTrackerSecondary {
             logger.info("Random Plant: " + randomPlant.getName());
             logger.info("Species: " + randomPlant.getSpecies());
             logger.info("Age: " + randomPlant.getAge() + " years");
-            logger.info(
-                    "Care Instructions: " + randomPlant.getCareInstructions());
+            logger.info("Care Instructions: " + randomPlant.getCareInstructions());
         }
     }
 
-    @Override
     public int countPlants() {
         return this.plants.size();
     }
 
-    @Override
     public void removePlant(String name) {
         if (this.plants.containsKey(name)) {
             this.plants.remove(name);
@@ -120,37 +103,28 @@ public final class PlantTracker extends PlantTrackerSecondary {
         }
     }
 
-    @Override
     public void clear() {
         this.plants.clear();
         logger.info("All plants have been cleared.");
     }
 
-    @Override
     public void transferFrom(PlantTracker source) {
-        List<Plant> sourceRepresentation = source.createRepresentation();
-        this.createRepresentation().clear();
-        this.createRepresentation().addAll(sourceRepresentation);
-        sourceRepresentation.clear();
+        this.plants.clear();
+        this.plants.putAll(source.plants);
     }
 
-    @Override
     public void listPlantsThatNeedWater() {
         boolean found = false;
 
         for (Plant plant : this.plants.values()) {
             boolean needsWater = false;
 
-            // example logic to determine if the plant needs water based on age
             if (plant.getAge() < 2) {
-                // younger plants may need water more frequently
                 needsWater = true;
             } else if (plant.getAge() >= 5) {
-                // older plants may also need water more frequently
                 needsWater = true;
             }
 
-            // if the plant needs water, log it
             if (needsWater) {
                 logger.info(plant.getName() + " needs water.");
                 found = true;
@@ -162,9 +136,33 @@ public final class PlantTracker extends PlantTrackerSecondary {
         }
     }
 
-    @Override
-    public PlantTracker newInstance() {
-        return new PlantTracker();
-    }
+    public static class Plant {
+        private final String name;
+        private final String species;
+        private final int age;
+        private final String careInstructions;
 
+        public Plant(String name, String species, int age, String careInstructions) {
+            this.name = name;
+            this.species = species;
+            this.age = age;
+            this.careInstructions = careInstructions;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public String getSpecies() {
+            return this.species;
+        }
+
+        public int getAge() {
+            return this.age;
+        }
+
+        public String getCareInstructions() {
+            return this.careInstructions;
+        }
+    }
 }

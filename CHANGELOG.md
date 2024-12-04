@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2024.12.04
+### Added
+- **Testing Suite**: Implemented a comprehensive set of tests for the PlantTracker component, ensuring all methods function as expected.
+- **Lib JAR Files**: Added necessary library JAR files to the project for handling dependencies.
+- **Reflection of Project**: Completed a reflective analysis of the project to evaluate learning outcomes and challenges encountered during development.
+
+### Changed
+- **Project Structure**: Refined project organization, improving file layering for better maintainability and clarity.
+- **Core Methods**: Adjusted the implementation of certain methods to improve testability and functionality.
 
 ## 2024.11.15
 ### Added
